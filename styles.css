@@ -140,7 +140,11 @@ body::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle at 1px 1px, var(--color-foreground) 0.5px, transparent 0.5px);
+  /* Dot radius is 1.2px, not the more "correct"-looking 0.5px: at 0.5px this build's
+     software rasterizer (headless, --disable-gpu) silently paints nothing at all, even at
+     6x this opacity — confirmed by isolated test. 1.2px is the smallest radius that
+     reliably rasterizes as a visible dot in that renderer. */
+  background-image: radial-gradient(circle, var(--color-foreground) 1.2px, transparent 1.2px);
   background-size: 8px 8px;
   opacity: 0.05;
 }
