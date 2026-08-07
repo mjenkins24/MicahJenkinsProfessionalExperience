@@ -92,14 +92,6 @@ h1, h2, h3, h4 {
 }
 p { margin: 0; }
 a { color: var(--color-primary); }
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
 
 /* Layout */
 .page-header,
@@ -127,6 +119,12 @@ main > section {
 }
 
 /* Header */
+/* .texture is position:absolute and comes first in the DOM within its container. Without
+   position:relative, positioned elements paint above normal-flow siblings regardless of
+   DOM order, so text after a texture would render underneath it. Elements that must sit
+   visually above a .texture layer (kicker, h1, role, intro, contact, rule, skills-label,
+   entry content, etc.) are given position:relative to opt into the same painting tier,
+   where DOM order then applies normally. */
 .texture {
   position: absolute;
   inset: 0;
@@ -355,7 +353,18 @@ main > section > h2 { font-size: var(--text-3xl); margin-bottom: var(--space-5);
   }
   .page-header > * { animation: none; }
   .entry { break-inside: avoid; page-break-inside: avoid; }
+
+  /* Entries default to `open` in the HTML, but a reader can still collapse one in the
+     browser before printing — force full content visible regardless of that state.
+     Chromium 120+ hides collapsed <details> content via a UA rule on the internal
+     ::details-content pseudo-element using content-visibility, not display, so a plain
+     `display` override does not undo it; content-visibility must be overridden directly,
+     which needs !important to reliably win against the UA rule. Older engines (Firefox,
+     pre-120 Chromium) instead hide via plain `display: none` on the content, which the
+     .entry-body rule below overrides without !important. */
+  .entry::details-content { content-visibility: visible !important; }
   .entry-body { display: block; }
+
   .entry-blurb { -webkit-line-clamp: unset; }
   a { color: #000; text-decoration: underline; }
 }
