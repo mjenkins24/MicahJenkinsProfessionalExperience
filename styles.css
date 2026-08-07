@@ -75,6 +75,11 @@
 
 /* Reset + base */
 *, *::before, *::after { box-sizing: border-box; }
+/* Root <svg> elements default to display:inline in the UA stylesheet. As a block-level
+   sibling of <header>, an inline 0x0 .sprite still gets wrapped in an anonymous block with
+   a full line-height "strut", leaving a ~26px gap above the header where nothing paints
+   over the page texture. display:block removes that phantom line box entirely. */
+.sprite { display: block; }
 body {
   margin: 0;
   overflow-x: hidden; /* guards against the 100vw full-bleed dividers rounding past the scrollbar */
@@ -137,7 +142,9 @@ main > section {
    itself horizontally centered (left:50% lands on the viewport center, not just the
    parent's) — a fixed-width sibling border can't do this without either JS or a second,
    unconstrained wrapper element. */
-main > section::before {
+/* Only the boundary between the header and the first section gets a divider — not between
+   every section. The footer keeps its own separate divider below (.page-footer::before). */
+main > section:first-of-type::before {
   content: "";
   position: absolute;
   top: 0;
