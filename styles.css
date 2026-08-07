@@ -251,7 +251,9 @@ main > section > h2 { font-size: var(--text-3xl); margin-bottom: var(--space-5);
 }
 
 /* Entries (details/summary — zero JS) */
-.entry { border: 1px solid var(--color-border); border-radius: var(--radius-sm); margin-bottom: var(--space-4); }
+/* Opaque background so the page-level texture (body::before) never shows through the card,
+   collapsed or expanded — .entry is the single box for both states, so one rule covers both. */
+.entry { background: var(--color-background); border: 1px solid var(--color-border); border-radius: var(--radius-sm); margin-bottom: var(--space-4); }
 .entry + .entry { margin-top: var(--space-4); }
 .entry-summary {
   display: flex;
