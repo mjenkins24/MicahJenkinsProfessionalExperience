@@ -40,12 +40,6 @@
   <!-- Shared SVG defs: decorative textures + icon symbols, referenced via <use>/url() below -->
   <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
     <defs>
-      <pattern id="texture-dots" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
-        <circle cx="1" cy="1" r="0.4" fill="currentColor" />
-        <circle cx="5" cy="5" r="0.3" fill="currentColor" />
-        <circle cx="1" cy="5" r="0.2" fill="currentColor" />
-        <circle cx="5" cy="1" r="0.2" fill="currentColor" />
-      </pattern>
       <pattern id="texture-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
         <line x1="0" y1="2" x2="20" y2="2" stroke="currentColor" stroke-width="0.3" />
         <line x1="0" y1="8" x2="20" y2="8" stroke="currentColor" stroke-width="0.3" />
@@ -67,8 +61,6 @@
   </svg>
 
   <header class="page-header">
-    <svg class="texture texture-header" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-dots)" /></svg>
-
     <svg class="data-stream" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
       <text x="0" y="8" font-size="4.5" fill="currentColor" class="op-60">DATA // STREAM</text>
       <text x="2" y="20" font-size="5" fill="currentColor" class="op-70">FF</text>
@@ -153,7 +145,7 @@
       <p class="section-kicker">~/professional</p>
       <h2 id="experience-heading">Experience</h2>
 
-      <details class="entry" open>
+      <details class="entry">
         <summary class="entry-summary">
           <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
           <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -169,7 +161,7 @@
         </summary>
         <div class="entry-body">
           <span class="entry-ruler" aria-hidden="true"></span>
-          <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+          <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
           <div class="entry-block">
             <p class="entry-label">Tech Stack</p>
             <ul class="chip-list">
@@ -187,7 +179,7 @@
         </div>
       </details>
 
-      <details class="entry" open>
+      <details class="entry">
         <summary class="entry-summary">
           <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
           <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -203,7 +195,7 @@
         </summary>
         <div class="entry-body">
           <span class="entry-ruler" aria-hidden="true"></span>
-          <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+          <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
           <div class="entry-block">
             <p class="entry-label">Tech Stack</p>
             <ul class="chip-list">
@@ -226,7 +218,7 @@
       <p class="section-kicker">~/personal</p>
       <h2 id="projects-heading">Projects</h2>
 
-      <details class="entry" open>
+      <details class="entry">
         <summary class="entry-summary">
           <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
           <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -242,7 +234,7 @@
         </summary>
         <div class="entry-body">
           <span class="entry-ruler" aria-hidden="true"></span>
-          <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+          <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
           <div class="entry-block">
             <p class="entry-label">Tech Stack</p>
             <ul class="chip-list">
@@ -260,7 +252,7 @@
         </div>
       </details>
 
-      <details class="entry" open>
+      <details class="entry">
         <summary class="entry-summary">
           <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
           <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -276,7 +268,7 @@
         </summary>
         <div class="entry-body">
           <span class="entry-ruler" aria-hidden="true"></span>
-          <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+          <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
           <div class="entry-block">
             <p class="entry-label">Tech Stack</p>
             <ul class="chip-list">
@@ -302,7 +294,7 @@
         <p class="section-kicker">~/undergrad</p>
         <h3 class="edu-subheading">Undergraduate</h3>
 
-        <details class="entry" open>
+        <details class="entry">
           <summary class="entry-summary">
             <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
             <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -318,7 +310,7 @@
           </summary>
           <div class="entry-body">
             <span class="entry-ruler" aria-hidden="true"></span>
-            <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
             <div class="entry-block">
               <p class="entry-label">Tech Stack</p>
               <ul class="chip-list">
@@ -336,7 +328,7 @@
           </div>
         </details>
 
-        <details class="entry" open>
+        <details class="entry">
           <summary class="entry-summary">
             <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
             <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -352,7 +344,7 @@
           </summary>
           <div class="entry-body">
             <span class="entry-ruler" aria-hidden="true"></span>
-            <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
             <div class="entry-block">
               <p class="entry-label">Tech Stack</p>
               <ul class="chip-list">
@@ -370,7 +362,7 @@
           </div>
         </details>
 
-        <details class="entry" open>
+        <details class="entry">
           <summary class="entry-summary">
             <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
             <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -386,7 +378,7 @@
           </summary>
           <div class="entry-body">
             <span class="entry-ruler" aria-hidden="true"></span>
-            <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
             <div class="entry-block">
               <p class="entry-label">Tech Stack</p>
               <ul class="chip-list">
@@ -404,7 +396,7 @@
           </div>
         </details>
 
-        <details class="entry" open>
+        <details class="entry">
           <summary class="entry-summary">
             <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
             <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -420,7 +412,7 @@
           </summary>
           <div class="entry-body">
             <span class="entry-ruler" aria-hidden="true"></span>
-            <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
             <div class="entry-block">
               <p class="entry-label">Tech Stack</p>
               <ul class="chip-list">
@@ -445,7 +437,7 @@
 
         <p class="degree-line">M.S., Computer Science — cybersecurity concentration. Expected <time datetime="2028-05">Spring 2028</time>.</p>
 
-        <details class="entry" open>
+        <details class="entry">
           <summary class="entry-summary">
             <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
             <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
@@ -461,7 +453,7 @@
           </summary>
           <div class="entry-body">
             <span class="entry-ruler" aria-hidden="true"></span>
-            <svg class="texture texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
             <div class="entry-block">
               <p class="entry-label">Tech Stack</p>
               <ul class="chip-list">
@@ -485,6 +477,12 @@
 
   <footer class="page-footer">
     <p>&copy; 2026 Micah Jenkins</p>
+    <p class="footer-links">
+      <a href="mailto:micaht.m.jenkins24@gmail.com">micaht.m.jenkins24@gmail.com</a>
+      <a href="https://www.linkedin.com/in/micahjenkins24" rel="me noopener noreferrer" target="_blank">LinkedIn</a>
+      <a href="https://github.com/mjenkins24/MicahJenkinsProfessionalExperience" rel="noopener noreferrer" target="_blank">Source on GitHub</a>
+    </p>
+    <p class="footer-note">Static HTML and CSS. No JavaScript.</p>
   </footer>
 
 </body>
