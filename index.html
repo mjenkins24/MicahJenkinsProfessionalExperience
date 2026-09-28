@@ -199,7 +199,7 @@
               <time class="entry-year" datetime="2026">2026</time>
             </span>
             <h3 class="entry-title">Photography &amp; Design Web Application</h3>
-            <p class="entry-blurb">Designed and built a full-stack single-page web application from scratch — architecture, custom CSS design system, and deployment.</p>
+            <p class="entry-blurb">Designed and built a photography portfolio single-page application from scratch, covering component architecture, a hand-coded SVG visual system, and deployment.</p>
           </span>
           <svg class="icon icon-chevron" aria-hidden="true" focusable="false"><use href="#icon-chevron-right" /></svg>
         </summary>
@@ -209,15 +209,15 @@
           <div class="entry-block">
             <p class="entry-label">Tech Stack</p>
             <ul class="chip-list">
-              <li>React</li><li>Vite</li><li>React Router</li><li>Tailwind CSS</li><li>Framer Motion</li>
+              <li>React</li><li>Vite</li><li>React Router</li><li>Tailwind CSS</li><li>Framer Motion</li><li>Cloudinary</li><li>Google Forms API</li>
             </ul>
           </div>
           <div class="entry-block">
             <p class="entry-label">Project Log</p>
-            <p class="entry-description">Built with React and Vite, using React Router for client-side routing and an Apache rewrite rule for SPA fallback on a traditional web host. Designed a token-based CSS system on top of Tailwind CSS, where background, foreground, primary, and border colors resolve from CSS custom properties instead of hardcoded values throughout the codebase. Hand-coded an SVG component library for the site's visual language — corner frames, HUD-style status readouts, data-stream displays, and signal indicators — with no icon or graphics library involved. Built asymmetric gallery layouts that respect native aspect ratios across different camera sources, with hover-triggered EXIF metadata overlays showing aperture, ISO, shutter speed, and camera model per photo. Implemented the full SEO layer from scratch, including per-page meta tags, Open Graph tags, and JSON-LD structured data.</p>
+            <p class="entry-description">Built with React and Vite, using React Router for client-side routing and an Apache rewrite rule for SPA fallback on a traditional web host. Designed a token-based CSS system on top of Tailwind CSS, where background, foreground, primary, and border colors resolve from CSS custom properties instead of hardcoded values throughout the codebase, paired with a dual-typeface system that sets serif display type for headlines against a monospace face for HUD-style labels and metadata. Hand-coded an SVG component library for the site's visual language, including corner frames, HUD-style status readouts, data-stream displays, signal indicators, and procedural textures, with no icon or graphics library involved. Used Framer Motion throughout for scroll-triggered entrance animations, a shared-layout animated underline that tracks the active nav link, and animated dropdown and mobile menus, with a scroll-reactive navbar that shifts from transparent over the hero to a blurred, opaque bar once the page scrolls. Built a photo and video carousel with touch swipe detection and tap-zone navigation, and a gallery layout engine that greedily balances photos across columns by aspect ratio, keeping camera and smartphone captures visually consistent while respecting each photo's native proportions; camera photos surface hover-triggered metadata overlays for aperture, ISO, shutter speed, and camera model, while phone photos surface the moment or event captured instead. Structured each gallery category as two curated halves, camera work framed as "Precision &amp; Intent" and phone captures framed as "Spontaneous Captures," giving the photography its own editorial voice instead of one undifferentiated grid. Built an image pipeline backed by Cloudinary: a Node.js migration script uses Sharp to downscale and compress source photos before uploading them, and every image on the site requests a Cloudinary-transformed URL with automatic format and quality selection plus a generated srcset across eight breakpoints, so the browser only downloads the resolution it actually needs. Wired the contact form to the Google Forms API so submissions land directly in a spreadsheet without a custom backend. Implemented the full SEO layer from scratch, including per-page meta tags, Open Graph tags, and JSON-LD structured data.</p>
           </div>
           <dl class="entry-facts">
-            <div><dt>Role</dt><dd>Full Stack Developer &amp; Designer</dd></div>
+            <div><dt>Role</dt><dd>Front End Developer &amp; Designer</dd></div>
             <div><dt>Timeline</dt><dd><time datetime="2026-04">April 2026</time> – Present</dd></div>
           </dl>
         </div>
