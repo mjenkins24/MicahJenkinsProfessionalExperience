@@ -417,8 +417,8 @@
                 <span class="entry-category">Grad</span>
                 <time class="entry-year" datetime="2026">2026</time>
               </span>
-              <h4 class="entry-title">In development...</h4>
-              <p class="entry-blurb">Started my Master's Degree in Computer Science (Cybersecurity) at Arizona State University January 2026.</p>
+              <h4 class="entry-title">Linux Kernel Module Development</h4>
+              <p class="entry-blurb">Linux kernel programming in C. Every project was a loadable kernel module built and tested inside a virtual machine, so a bug usually meant a hung kernel rather than a stack trace.</p>
             </span>
             <svg class="icon icon-chevron" aria-hidden="true" focusable="false"><use href="#icon-chevron-right" /></svg>
           </summary>
@@ -428,16 +428,123 @@
             <div class="entry-block">
               <p class="entry-label">Tech Stack</p>
               <ul class="chip-list">
-                <li>Canvas</li>
+                <li>C</li><li>Linux Kernel</li><li>Kernel Modules</li><li>Kernel Threads</li><li>Semaphores</li><li>ioctl</li><li>Virtual Machine</li>
               </ul>
             </div>
             <div class="entry-block">
-              <p class="entry-label">Project Log</p>
-              <p class="entry-description">Check back soon for patch notes...</p>
+              <p class="entry-label">Custom System Call &amp; Kernel Module</p>
+              <p class="entry-description">I added a new system call to the Linux kernel by registering it in the syscall table and headers, then called it from a user-space test program. I also wrote a parameterized kernel module that takes arguments at load time and logs to the kernel ring buffer. This was my first time working directly inside the kernel.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Producer&ndash;Consumer Kernel Threads</p>
+              <p class="entry-description">I built a multithreaded kernel module that walks the kernel's task list, finds every process owned by a given user and adds up their total elapsed run time. It's structured as the classic producer&ndash;consumer problem: a producer thread fills a bounded shared buffer and consumer threads drain it, with semaphores keeping access synchronized. The hard part was shutting down cleanly, which meant signaling every blocked thread so the module could unload without deadlocking the VM.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Zombie Killer</p>
+              <p class="entry-description">I extended that producer&ndash;consumer design into a module that finds and removes zombie processes. The producer scans the task list every 250 ms for processes in the EXIT_ZOMBIE state. The consumers then clean them up by sending SIGKILL to the parent that never reaped them. It had to clear up to 1,000 zombies within 10 seconds, using up to 50 consumer threads, without touching a single normal process.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Process Memory Allocator</p>
+              <p class="entry-description">I wrote a kernel module that handles memory allocation requests from user programs, similar to mmap. Programs talk to it through a virtual device (/dev/memalloc) using ioctl. The module walks the process's five-level page table (PGD &rarr; P4D &rarr; PUD &rarr; PMD &rarr; PTE) to check whether an address is already mapped, creates any missing table levels, and maps new zeroed physical pages with read-only or read-write permissions. It also enforces limits on total pages and on the number of requests, returning a clear error code for each kind of rejection.</p>
             </div>
             <dl class="entry-facts">
-              <div><dt>Role</dt><dd>Student</dd></div>
-              <div><dt>Timeline</dt><dd><time datetime="2026-01">Spring 2026</time></dd></div>
+              <div><dt>Role</dt><dd>Graduate Student</dd></div>
+              <div><dt>Timeline</dt><dd><time datetime="2026">2026</time></dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-summary">
+            <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
+            <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
+            <span class="entry-summary-text">
+              <span class="entry-meta">
+                <span class="entry-category">Grad</span>
+                <time class="entry-year" datetime="2026">2026</time>
+              </span>
+              <h4 class="entry-title">Cryptographic Algorithms &amp; Cryptanalysis</h4>
+              <p class="entry-blurb">Building cryptographic algorithms from the math up in C#/.NET 8, and then looking at how weak implementations get broken.</p>
+            </span>
+            <svg class="icon icon-chevron" aria-hidden="true" focusable="false"><use href="#icon-chevron-right" /></svg>
+          </summary>
+          <div class="entry-body">
+            <span class="entry-ruler" aria-hidden="true"></span>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <div class="entry-block">
+              <p class="entry-label">Tech Stack</p>
+              <ul class="chip-list">
+                <li>C#</li><li>.NET 8</li><li>BigInteger</li><li>System.Security.Cryptography</li><li>AES-256</li><li>DES</li>
+              </ul>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">RSA Encryption</p>
+              <p class="entry-description">I implemented RSA from scratch, working with primes over 200 bits using BigInteger. I wrote my own Extended Euclidean algorithm to find the private key (d), checked it against e&middot;d &equiv; 1 (mod &phi;(n)), and then used the keys to encrypt and decrypt messages.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Diffie&ndash;Hellman Key Exchange + AES-256</p>
+              <p class="entry-description">I implemented the Diffie&ndash;Hellman key exchange to derive a shared 256-bit secret from very large numbers that no standard integer type can hold. I then used that key with AES-256 from .NET's cryptography library to encrypt and decrypt data, handling the IV and hex-encoded byte formats.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Steganography &amp; Cryptanalysis</p>
+              <p class="entry-description"><strong>Steganography:</strong> I worked byte by byte with a bitmap file and hid a 12-byte secret in the two least significant bits of each color byte using XOR. The image looks exactly the same afterward.</p>
+              <p class="entry-description"><strong>Cryptanalysis:</strong> I broke a DES encryption by exploiting a weak random number generator. The key had been generated from a PRNG seeded with the current time in minutes. Knowing part of the plaintext, I brute-forced every possible seed in a 24-hour window until I found the one that reproduced the ciphertext. It showed me first-hand why secure code needs a cryptographically secure RNG.</p>
+            </div>
+            <dl class="entry-facts">
+              <div><dt>Role</dt><dd>Graduate Student</dd></div>
+              <div><dt>Timeline</dt><dd><time datetime="2026">2026</time></dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-summary">
+            <svg class="icon icon-folder-closed" aria-hidden="true" focusable="false"><use href="#icon-folder" /></svg>
+            <svg class="icon icon-folder-open" aria-hidden="true" focusable="false"><use href="#icon-folder-open" /></svg>
+            <span class="entry-summary-text">
+              <span class="entry-meta">
+                <span class="entry-category">Grad</span>
+                <time class="entry-year" datetime="2026">2026</time>
+              </span>
+              <h4 class="entry-title">Software Testing &amp; Quality Assurance</h4>
+              <p class="entry-blurb">Hands-on QA work: designing tests, measuring coverage, running static analysis and load testing, using industry tools wherever I could.</p>
+            </span>
+            <svg class="icon icon-chevron" aria-hidden="true" focusable="false"><use href="#icon-chevron-right" /></svg>
+          </summary>
+          <div class="entry-body">
+            <span class="entry-ruler" aria-hidden="true"></span>
+            <svg class="texture-entry" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#texture-grid)" /></svg>
+            <div class="entry-block">
+              <p class="entry-label">Tech Stack</p>
+              <ul class="chip-list">
+                <li>Java</li><li>Maven</li><li>JUnit</li><li>JaCoCo</li><li>SonarQube</li><li>PMD</li><li>Microsoft PICT</li><li>Locust</li><li>Python</li><li>Claude Code</li>
+              </ul>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Specification-Based Testing</p>
+              <p class="entry-description">I designed black-box test cases for a Java discount-calculation program using equivalence partitioning, boundary value analysis and cause-and-effect testing. I wrote and ran 15 targeted test cases and logged 10 defects in a defect-tracking sheet, each mapped back to the requirement it violated.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Design of Experiments (Pairwise Testing)</p>
+              <p class="entry-description">For a mobile app with five input parameters, I generated pairwise test suites two ways: with Microsoft's PICT tool and with an AI assistant (Claude Code). Both cut 175 possible combinations down to under 30 tests, a reduction of more than 97%. PICT gave the smallest and most consistent result. In my write-up, I concluded that for professional work a deterministic, proven tool should be the source of truth, and AI works best as a way to sanity-check it.</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Structural Testing &amp; Static Analysis</p>
+              <p class="entry-description">I set up a Maven project with JUnit and JaCoCo to measure code coverage on a vending-machine program. My tests reached 100% statement coverage and 93.75% branch coverage, and I showed that the one remaining branch can't actually be reached. I also used SonarQube and PMD to find data-flow anomalies, including unused assignments and a string comparison using == instead of .equals().</p>
+            </div>
+            <div class="entry-block">
+              <p class="entry-label">Performance &amp; Load Testing</p>
+              <p class="entry-description">I used Locust (Python) to load test an application at 100, 1,000 and 10,000 concurrent users, tracking requests per second, response times and failures. I found three bottlenecks:</p>
+              <ul class="entry-list">
+                <li>a blocking database call whose response time grew to 10&times; its baseline under load</li>
+                <li>an external API whose failures and latency grew with traffic</li>
+                <li>a CPU-bound task holding Python's GIL, which made failure rates look better as load went up</li>
+              </ul>
+              <p class="entry-description">I then changed the test strategy to a longer soak test. It exposed slow API degradation that the short runs had missed, with average response times reaching about 42 seconds.</p>
+            </div>
+            <dl class="entry-facts">
+              <div><dt>Role</dt><dd>Graduate Student</dd></div>
+              <div><dt>Timeline</dt><dd><time datetime="2026">2026</time></dd></div>
             </dl>
           </div>
         </details>
